@@ -1,0 +1,8 @@
+body {font-family: Helvetica, Arial, sans-serif; margin: 0;}
+
+#header_bar {background-color: #EEE; line-height: 30px; height: 30px; vertical-align: middle;}
+#header_bar .name {font-weight: bold;}
+#header_bar img {margin: 3px; float: left;}
+#header_bar ul {margin: 0; padding: 0; float: right; list-style: none; display: inline;}
+#header_bar li {display: inline; margin-right: 1em;}
+#header_bar li a {text-decoration: none;}
