@@ -6,3 +6,7 @@ body {font-family: Helvetica, Arial, sans-serif; margin: 0;}
 #header_bar ul {margin: 0; padding: 0; float: right; list-style: none; display: inline;}
 #header_bar li {display: inline; margin-right: 1em;}
 #header_bar li a {text-decoration: none;}
+
+#content {width: 900px; margin: 0 auto;}
+
+.post .meta {font-style: italic; color: #555; font-size: 80%; margin: 0 0 10px;}
