@@ -1,0 +1,26 @@
+---
+layout: post
+title: Forward Compatibility with Ruby 1.9
+---
+Rails 3.0 is going to fully support Ruby 1.9.  It's a good thing, too, since 1.9 is much faster and has some important improvements.  What that means is that, eventually, <a href="http://yehudakatz.com/2009/07/17/what-do-we-need-to-get-on-ruby-1-9/" title="What do we need to get on Ruby 1.9? &laquo;  Katz Got Your Tongue?">if not now</a>, you'll want to at least make sure your code runs in 1.9.  A while back, I went through the differences between 1.8 and 1.9 with an eye for forward compatibility issues.  I've picked out what I think the major gotchas are.  Avoid these in your code and it should make moving to 1.9 a lot easier.
+
+<!--more-->
+<p><strong>Hashes are now ordered.</strong>  This really shouldn't cause problems for you, since the order of hashes in 1.8 are not to be trusted.  You may want to consider an alternate implementation of <code>OrderedHash</code> once you go to 1.9 so eliminate unnecessary work.</p>
+
+<div><script src="http://gist.github.com/239094.js?file=HashesAreOrdered.rb"></script></div>
+
+<p><strong><code>Object</code> now has a superclass, <code>BasicObject</code>.</strong>  You should checkout <a href="http://amazon.com/dp/1934356085" title="Amazon.com: Programming Ruby 1.9: The Pragmatic Programmers' Guide (Facets of Ruby) (9781934356081): Dave Thomas, Chad Fowler, Andy Hunt: Books">the Pickaxe</a> for the reasons behind this, but it's important that you don't rely on <code>Object.superclass</code> being <code>nil</code>.</p>
+
+<div><script src="http://gist.github.com/239094.js?file=ObjectSuperclass.rb"></script></div>
+
+<p><strong>The grammar for single line <code>if</code> statements has changed.</strong>  Specifically, <code>then</code> is now the blessed form.  The <code>:</code> form has been removed.</p>
+
+<div><script src="http://gist.github.com/239094.js?file=SingleLineStatements.rb"></script></div>
+
+<p><strong>The <code>retry</code> command has been removed from looping.</strong>  It is still available for exception handling, though.  I doubt anybody here really used this. Don't start.</p>
+
+<div><script src="http://gist.github.com/239094.js?file=RetryOnLoops.rb"></script></div>
+
+<p><strong>The scoping rules for blocks have changed.</strong>  This is probably the most likely to bite you because it's an easy thing to miss.  The change is that, in 1.9, block parameters are <em>always</em> private to the block.  The best way to protect yourself from this is to never share a local variable name with a block parameter name.</p>
+
+<div><script src="http://gist.github.com/239094.js?file=PrivateBlockParams.rb"></script></div>
