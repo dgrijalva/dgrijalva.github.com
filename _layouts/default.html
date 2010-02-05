@@ -3,22 +3,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>{{ page.title }}</title>
-	<link href="styles/default.css" media="screen" rel="stylesheet" type="text/css" />
+  {% include head.html %}
 </head>
 
 <body>
-	<div id="header_bar">
-		<ul>
-			<li><a href="http://www.davegrijalva.com">Blog</a></li>
-			<li><a href="http://github.com/dgrijalva">Projects</a></li>
-		</ul>
-		<img src="images/dave_cartoon_24.png" />
-		<span class="name">Dave Grijalva</span>
-	</div>
+  {% include header_bar.html %}
 	<div id="content">
 		{{ content }}
 	</div>
+	
+	{% include disqus_footer.html %}
 </body>
 </html>
